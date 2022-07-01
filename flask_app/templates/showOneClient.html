@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Dojos And Ninjas</title>
+</head>
+<body>
+    <h1> Welcome {{client.thought}} </h1>
+    <h1> Ritas Thought  </h1>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Thought</th>
+            <th scope="col">Likes</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">{{client.thought}}</th>
+                <td>{{client.likes}}</td>
+
+
+                {% if user.email not in client.users_who_liked %}
+                <td><a href="/client/{{client.id}}/like">Like</a></td>
+                {% endif %}
+                {% if user.email in client.users_who_liked %}
+                <td><a href="/client/{{client.id}}/unlike">Unlike</a></td>
+                {% endif %}
+            </tr>
+
+        </tbody>
+      </table>
+      <a href="/">Dashboard</a>
+      <button> Logout </button>
+</body>
+</html>
